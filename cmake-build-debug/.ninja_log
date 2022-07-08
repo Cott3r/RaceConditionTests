@@ -1,3 +1,16 @@
 # ninja log v5
-0	234	1657282017893711143	CMakeFiles/RaceConditionTests.dir/main.cpp.o	8afce45cf7610b5a
-234	281	1657282017941712084	RaceConditionTests	7d30e8e3469186b8
+1	2083	1657283561964919519	testing/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o	f7721af085e261e6
+3831	3847	1657283563728950137	lib/libgmock.a	9c66f419898448ca
+1	962	1657283560844900075	testing/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	7f5d72387e5f8401
+3789	3830	1657283563708949790	lib/libgtest.a	72ff6d03675f3ef2
+1	3789	1657283563668949096	testing/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	fe84f3860c3d6a6e
+1	1273	1657283561156905491	testing/CMakeFiles/Google_tests.dir/userTest.cpp.o	256693aba6b95b58
+0	232	1657283953531639443	libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o	a10b66e0222a337d
+0	237	1657283700363310760	CMakeFiles/main.dir/main.cpp.o	967b875f436d1f7c
+237	294	1657284000848443587	RaceConditionTests	4bc5838cb28c17d1
+3847	3973	1657283563856952359	testing/Google_tests	5c4698d9bf111622
+232	236	1657283953539639579	libraries/libRaceCondition_libc.a	15cfdfad37fd70d7
+3831	3835	1657283563716949929	lib/libgtest_main.a	6e00d4752b5a0f52
+0	237	1657284000788442568	CMakeFiles/RaceConditionTests.dir/main.cpp.o	8e52e5d891a22161
+1	1183	1657284083709848947	testing/CMakeFiles/Google_tests.dir/userTest.cpp.o	a8f1809920f28796
+1183	1310	1657284083837851115	testing/Google_tests	e63bb2fbb8da06f3

@@ -47,15 +47,14 @@ cmake_ninja_workdir = /home/testing/CLionProjects/RaceConditionTests/cmake-build
 #############################################
 # Order-only phony target for RaceConditionTests
 
-build cmake_object_order_depends_target_RaceConditionTests: phony || CMakeFiles/RaceConditionTests.dir
+build cmake_object_order_depends_target_RaceConditionTests: phony || cmake_object_order_depends_target_RaceCondition_libc
 
 build CMakeFiles/RaceConditionTests.dir/main.cpp.o: CXX_COMPILER__RaceConditionTests_Debug /home/testing/CLionProjects/RaceConditionTests/main.cpp || cmake_object_order_depends_target_RaceConditionTests
   DEP_FILE = CMakeFiles/RaceConditionTests.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/libraries/header
   OBJECT_DIR = CMakeFiles/RaceConditionTests.dir
   OBJECT_FILE_DIR = CMakeFiles/RaceConditionTests.dir
-  TARGET_COMPILE_PDB = CMakeFiles/RaceConditionTests.dir/
-  TARGET_PDB = RaceConditionTests.pdb
 
 
 # =============================================================================
@@ -65,14 +64,14 @@ build CMakeFiles/RaceConditionTests.dir/main.cpp.o: CXX_COMPILER__RaceConditionT
 #############################################
 # Link the executable RaceConditionTests
 
-build RaceConditionTests: CXX_EXECUTABLE_LINKER__RaceConditionTests_Debug CMakeFiles/RaceConditionTests.dir/main.cpp.o
+build RaceConditionTests: CXX_EXECUTABLE_LINKER__RaceConditionTests_Debug CMakeFiles/RaceConditionTests.dir/main.cpp.o | libraries/libRaceCondition_libc.a || libraries/libRaceCondition_libc.a
   FLAGS = -g
+  LINK_LIBRARIES = libraries/libRaceCondition_libc.a
   OBJECT_DIR = CMakeFiles/RaceConditionTests.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/RaceConditionTests.dir/
   TARGET_FILE = RaceConditionTests
-  TARGET_PDB = RaceConditionTests.pdb
+  TARGET_PDB = RaceConditionTests.dbg
 
 
 #############################################
@@ -98,8 +97,691 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Google_tests
+
+
+#############################################
+# Order-only phony target for Google_tests
+
+build cmake_object_order_depends_target_Google_tests: phony || cmake_object_order_depends_target_RaceCondition_libc cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build testing/CMakeFiles/Google_tests.dir/userTest.cpp.o: CXX_COMPILER__Google_tests_Debug /home/testing/CLionProjects/RaceConditionTests/testing/userTest.cpp || cmake_object_order_depends_target_Google_tests
+  DEP_FILE = testing/CMakeFiles/Google_tests.dir/userTest.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/libraries/header -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock
+  OBJECT_DIR = testing/CMakeFiles/Google_tests.dir
+  OBJECT_FILE_DIR = testing/CMakeFiles/Google_tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Google_tests
+
+
+#############################################
+# Link the executable testing/Google_tests
+
+build testing/Google_tests: CXX_EXECUTABLE_LINKER__Google_tests_Debug testing/CMakeFiles/Google_tests.dir/userTest.cpp.o | libraries/libRaceCondition_libc.a lib/libgtest.a lib/libgmock.a lib/libgtest_main.a lib/libgtest.a || lib/libgmock.a lib/libgtest.a lib/libgtest_main.a libraries/libRaceCondition_libc.a
+  FLAGS = -g
+  LINK_LIBRARIES = libraries/libRaceCondition_libc.a  lib/libgtest.a  lib/libgmock.a  lib/libgtest_main.a  lib/libgtest.a  -lpthread
+  OBJECT_DIR = testing/CMakeFiles/Google_tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = testing/Google_tests
+  TARGET_PDB = Google_tests.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build testing/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build testing/edit_cache: phony testing/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build testing/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build testing/rebuild_cache: phony testing/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build testing/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build testing/CMakeFiles/install.util: CUSTOM_COMMAND testing/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build testing/install: phony testing/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build testing/CMakeFiles/install/local.util: CUSTOM_COMMAND testing/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build testing/install/local: phony testing/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build testing/CMakeFiles/install/strip.util: CUSTOM_COMMAND testing/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build testing/install/strip: phony testing/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/testing/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build testing/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build testing/googletest/edit_cache: phony testing/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build testing/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build testing/googletest/rebuild_cache: phony testing/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build testing/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build testing/googletest/CMakeFiles/install.util: CUSTOM_COMMAND testing/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build testing/googletest/install: phony testing/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build testing/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND testing/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build testing/googletest/install/local: phony testing/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build testing/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND testing/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build testing/googletest/install/strip: phony testing/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/testing/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build testing/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_Debug /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = testing/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/include -I/home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest
+  OBJECT_DIR = testing/googletest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = testing/googletest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug testing/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = testing/googletest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build testing/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_Debug /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = testing/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
+  INCLUDES = -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest
+  OBJECT_DIR = testing/googletest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = testing/googletest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug testing/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = testing/googletest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build testing/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build testing/googletest/googlemock/edit_cache: phony testing/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build testing/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build testing/googletest/googlemock/rebuild_cache: phony testing/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build testing/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build testing/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND testing/googletest/googlemock/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build testing/googletest/googlemock/install: phony testing/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build testing/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND testing/googletest/googlemock/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build testing/googletest/googlemock/install/local: phony testing/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build testing/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND testing/googletest/googlemock/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build testing/googletest/googlemock/install/strip: phony testing/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || testing/googletest/googletest/CMakeFiles/gtest.dir
+
+build testing/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_Debug /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = testing/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/include -I/home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest
+  OBJECT_DIR = testing/googletest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = testing/googletest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug testing/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = testing/googletest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build testing/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_Debug /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = testing/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17
+  INCLUDES = -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest/include -isystem /home/testing/CLionProjects/RaceConditionTests/testing/googletest/googletest
+  OBJECT_DIR = testing/googletest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = testing/googletest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug testing/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = testing/googletest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build testing/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build testing/googletest/googletest/edit_cache: phony testing/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build testing/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build testing/googletest/googletest/rebuild_cache: phony testing/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build testing/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build testing/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND testing/googletest/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build testing/googletest/googletest/install: phony testing/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build testing/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND testing/googletest/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build testing/googletest/googletest/install/local: phony testing/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build testing/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND testing/googletest/googletest/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build testing/googletest/googletest/install/strip: phony testing/googletest/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target RaceCondition_libc
+
+
+#############################################
+# Order-only phony target for RaceCondition_libc
+
+build cmake_object_order_depends_target_RaceCondition_libc: phony || libraries/CMakeFiles/RaceCondition_libc.dir
+
+build libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o: CXX_COMPILER__RaceCondition_libc_Debug /home/testing/CLionProjects/RaceConditionTests/libraries/src/Worker.cpp || cmake_object_order_depends_target_RaceCondition_libc
+  DEP_FILE = libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/libraries/header
+  OBJECT_DIR = libraries/CMakeFiles/RaceCondition_libc.dir
+  OBJECT_FILE_DIR = libraries/CMakeFiles/RaceCondition_libc.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target RaceCondition_libc
+
+
+#############################################
+# Link the static library libraries/libRaceCondition_libc.a
+
+build libraries/libRaceCondition_libc.a: CXX_STATIC_LIBRARY_LINKER__RaceCondition_libc_Debug libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = libraries/CMakeFiles/RaceCondition_libc.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libraries/libRaceCondition_libc.a
+  TARGET_PDB = RaceCondition_libc.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build libraries/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build libraries/edit_cache: phony libraries/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build libraries/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build libraries/rebuild_cache: phony libraries/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build libraries/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build libraries/CMakeFiles/install.util: CUSTOM_COMMAND libraries/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build libraries/install: phony libraries/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build libraries/CMakeFiles/install/local.util: CUSTOM_COMMAND libraries/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build libraries/install/local: phony libraries/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build libraries/CMakeFiles/install/strip.util: CUSTOM_COMMAND libraries/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build libraries/install/strip: phony libraries/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/testing/CLionProjects/RaceConditionTests/libraries/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build libraries/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src && /snap/clion/198/bin/cmake/linux/bin/ccmake -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build libraries/src/edit_cache: phony libraries/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build libraries/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src && /snap/clion/198/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/testing/CLionProjects/RaceConditionTests -B/home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build libraries/src/rebuild_cache: phony libraries/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build libraries/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build libraries/src/CMakeFiles/install.util: CUSTOM_COMMAND libraries/src/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src && /snap/clion/198/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build libraries/src/install: phony libraries/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build libraries/src/CMakeFiles/install/local.util: CUSTOM_COMMAND libraries/src/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build libraries/src/install/local: phony libraries/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build libraries/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND libraries/src/all
+  COMMAND = cd /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src && /snap/clion/198/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build libraries/src/install/strip: phony libraries/src/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build Google_tests: phony testing/Google_tests
+
+build RaceCondition_libc: phony libraries/libRaceCondition_libc.a
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libRaceCondition_libc.a: phony libraries/libRaceCondition_libc.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
 
 # =============================================================================
 # Folder targets.
@@ -109,7 +791,49 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug
 
-build all: phony RaceConditionTests
+build all: phony RaceConditionTests testing/all libraries/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries
+
+build libraries/all: phony libraries/libRaceCondition_libc.a libraries/src/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/libraries/src
+
+build libraries/src/all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing
+
+build testing/all: phony testing/Google_tests testing/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest
+
+build testing/googletest/all: phony testing/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googlemock
+
+build testing/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a testing/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/testing/CLionProjects/RaceConditionTests/cmake-build-debug/testing/googletest/googletest
+
+build testing/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -118,14 +842,14 @@ build all: phony RaceConditionTests
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompilerABI.c /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCXXCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystem.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-Determine-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../libraries/CMakeLists.txt ../libraries/src/CMakeLists.txt ../testing/CMakeLists.txt ../testing/googletest/CMakeLists.txt ../testing/googletest/googlemock/CMakeLists.txt ../testing/googletest/googlemock/cmake/gmock.pc.in ../testing/googletest/googlemock/cmake/gmock_main.pc.in ../testing/googletest/googletest/CMakeLists.txt ../testing/googletest/googletest/cmake/Config.cmake.in ../testing/googletest/googletest/cmake/gtest.pc.in ../testing/googletest/googletest/cmake/gtest_main.pc.in ../testing/googletest/googletest/cmake/internal_utils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDependentOption.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckIncludeFile.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckLibraryExists.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPython.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPython/Support.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindThreads.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/GNUInstallDirs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCCompilerABI.c /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCXXCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystem.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-Determine-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../libraries/CMakeLists.txt ../libraries/src/CMakeLists.txt ../testing/CMakeLists.txt ../testing/googletest/CMakeLists.txt ../testing/googletest/googlemock/CMakeLists.txt ../testing/googletest/googlemock/cmake/gmock.pc.in ../testing/googletest/googlemock/cmake/gmock_main.pc.in ../testing/googletest/googletest/CMakeLists.txt ../testing/googletest/googletest/cmake/Config.cmake.in ../testing/googletest/googletest/cmake/gtest.pc.in ../testing/googletest/googletest/cmake/gtest_main.pc.in ../testing/googletest/googletest/cmake/internal_utils.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeDependentOption.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckIncludeFile.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/CheckLibraryExists.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Compiler/GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageMessage.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPython.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindPython/Support.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/FindThreads.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/GNUInstallDirs.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/Linux.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /snap/clion/198/bin/cmake/linux/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
 
 
 #############################################

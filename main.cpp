@@ -1,6 +1,13 @@
 #include <iostream>
+#include "Worker.h"
 
-int main() {
-  std::cout << "Hello, World!" << std::endl;
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+  Worker* worker = new Worker();
+
+  worker->doWork();
+
   return 0;
 }
