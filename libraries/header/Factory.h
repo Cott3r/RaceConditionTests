@@ -11,6 +11,8 @@ using namespace std;
 
 class Factory
 {
+    static int runFactory();
+
 public:
     string toString();
 

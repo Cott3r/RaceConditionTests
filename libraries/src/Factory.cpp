@@ -11,5 +11,18 @@ string Factory::toString()
 
 bool Factory::runTest()
 {
-  return false;
+  pthread_t tid;
+  int returnValue;
+
+  pthread_create(&tid, 0, (void*(*)(void*))runFactory, 0);
+  pthread_join(tid, (void**)&returnValue);
+
+  return returnValue == 1;
+}
+
+int Factory::runFactory()
+{
+  cout << "runFactory" << endl;
+
+  return 1;
 }
