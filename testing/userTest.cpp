@@ -9,23 +9,54 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "Worker.h"
+#include "Factory.h"
+
+using namespace std;
+
+// The fixture for testing class FactoryTest.
+class FactoryTest : public ::testing::Test {
+protected:
+    // You can remove any or all of the following functions if their bodies would
+    // be empty.
+    Factory* factory;
+
+    FactoryTest() {
+      // You can do set-up work for each test here.
+      factory = new Factory();
+    }
+
+    ~FactoryTest() override {
+      // You can do clean-up work that doesn't throw exceptions here.
+      delete factory;
+    }
+
+    // If the constructor and destructor are not enough for setting up
+    // and cleaning up each test, you can define the following methods:
+
+    void SetUp() override {
+      // Code here will be called immediately after the constructor (right
+      // before each test).
+    }
+
+    void TearDown() override {
+      // Code here will be called immediately after each test (right
+      // before the destructor).
+    }
+
+    // Class members declared here can be used by all tests in the test suite
+    // for Foo.
+};
 
 
-TEST(SUIT1, Test1)
+TEST_F(FactoryTest, Test1)
 {
-  (new Worker())->doWork();
+  if(!factory->runTest())
+  {
+    FAIL() << factory->toString();
+  }
 }
 
-TEST(SUIT1, Test2)
+TEST_F(FactoryTest, Test2)
 {
   FAIL();
 }
-
-//int main(int argc, char **argv)
-//{
-//  ::testing::InitGoogleTest(&argc, argv);
-//  bool result = RUN_ALL_TESTS();
-//  printf("Result: %d  %s", result, result == 0 ? "All tests are successful\n" : "Some tests have failed\n");
-//
-//  return result;
-//}

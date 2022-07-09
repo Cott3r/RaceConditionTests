@@ -598,6 +598,13 @@ build testing/googletest/googletest/install/strip: phony testing/googletest/goog
 
 build cmake_object_order_depends_target_RaceCondition_libc: phony || libraries/CMakeFiles/RaceCondition_libc.dir
 
+build libraries/CMakeFiles/RaceCondition_libc.dir/src/Factory.cpp.o: CXX_COMPILER__RaceCondition_libc_Debug /home/testing/CLionProjects/RaceConditionTests/libraries/src/Factory.cpp || cmake_object_order_depends_target_RaceCondition_libc
+  DEP_FILE = libraries/CMakeFiles/RaceCondition_libc.dir/src/Factory.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -I/home/testing/CLionProjects/RaceConditionTests/libraries/header
+  OBJECT_DIR = libraries/CMakeFiles/RaceCondition_libc.dir
+  OBJECT_FILE_DIR = libraries/CMakeFiles/RaceCondition_libc.dir/src
+
 build libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o: CXX_COMPILER__RaceCondition_libc_Debug /home/testing/CLionProjects/RaceConditionTests/libraries/src/Worker.cpp || cmake_object_order_depends_target_RaceCondition_libc
   DEP_FILE = libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o.d
   FLAGS = -g -std=gnu++17
@@ -613,7 +620,7 @@ build libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o: CXX_COMPILER
 #############################################
 # Link the static library libraries/libRaceCondition_libc.a
 
-build libraries/libRaceCondition_libc.a: CXX_STATIC_LIBRARY_LINKER__RaceCondition_libc_Debug libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o
+build libraries/libRaceCondition_libc.a: CXX_STATIC_LIBRARY_LINKER__RaceCondition_libc_Debug libraries/CMakeFiles/RaceCondition_libc.dir/src/Factory.cpp.o libraries/CMakeFiles/RaceCondition_libc.dir/src/Worker.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = libraries/CMakeFiles/RaceCondition_libc.dir
   POST_BUILD = :
