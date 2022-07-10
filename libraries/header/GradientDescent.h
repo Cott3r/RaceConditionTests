@@ -5,16 +5,22 @@
 #ifndef RACECONDITIONTESTS_GRADIENTDESCENT_H
 #define RACECONDITIONTESTS_GRADIENTDESCENT_H
 
+#include <complex>
 #include "iostream"
 
 using namespace std;
 
 enum Position_Move_Direction
 {
+    None,
     Top,
+    Top_Right,
     Right,
+    Bottom_Right,
     Bottom,
-    Left
+    Bottom_Left,
+    Left,
+    Top_Left,
 };
 
 typedef struct POSITION_
@@ -37,16 +43,32 @@ typedef struct POSITION_
       switch (direction)
       {
         case Top:
-          x += move_speed;
-          break;
-        case Right:
           y += move_speed;
           break;
+        case Top_Right:
+          x += move_speed;
+          y += move_speed;
+          break;
+        case Right:
+          x += move_speed;
+          break;
+        case Bottom_Right:
+          x += move_speed;
+          y -= move_speed;
+          break;
         case Bottom:
+          y -= move_speed;
+          break;
+        case Bottom_Left:
           x -= move_speed;
+          y -= move_speed;
           break;
         case Left:
-          y -= move_speed;
+          x -= move_speed;
+          break;
+        case Top_Left:
+          x -= move_speed;
+          y += move_speed;
           break;
       }
     }
@@ -67,10 +89,13 @@ public:
                         position(Position()) {};
 
     long double terrainFunction(Position& position);
+    long double terrainFunctionZeta(Position& position);
 
     void findPosition();
 
     void printPosition();
+
+    std::complex<long double> zeta(const std::complex<long double>& s);
 
     size_t number_of_steps_;
     Position position;
