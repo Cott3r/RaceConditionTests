@@ -11,12 +11,14 @@ using namespace std;
 
 class Factory
 {
-    static int runFactory();
-
 public:
-    string toString();
+    Factory(size_t factoryNumber);
 
-    bool runTest();
+    size_t factoryNumber_;
+
+    string name();
+
+    size_t run();
 };
 
 

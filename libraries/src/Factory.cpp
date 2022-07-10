@@ -3,26 +3,25 @@
 //
 
 #include "Factory.h"
+#include "ThreadHelper.h"
 
-string Factory::toString()
+Factory::Factory(size_t factoryNumber) : factoryNumber_(factoryNumber) {}
+
+
+string Factory::name()
 {
-  return "Test";
+  return "Factory";
 }
 
-bool Factory::runTest()
+size_t Factory::run()
 {
-  pthread_t tid;
-  int returnValue;
+  ThreadHelper::printLine(this->name() + "Factory <" + to_string(this->factoryNumber_) + "> Start run");
+  size_t returnValue = 2;
 
-  pthread_create(&tid, 0, (void*(*)(void*))runFactory, 0);
-  pthread_join(tid, (void**)&returnValue);
 
-  return returnValue == 1;
-}
 
-int Factory::runFactory()
-{
-  cout << "runFactory" << endl;
 
-  return 1;
+
+  ThreadHelper::printLine(this->name() + "Factory <" + to_string(this->factoryNumber_) + "> End run Returnvalue <" + to_string(returnValue) + ">");
+  return returnValue;
 }

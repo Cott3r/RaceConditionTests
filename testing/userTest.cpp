@@ -10,6 +10,7 @@
 #include "gmock/gmock.h"
 #include "Worker.h"
 #include "Factory.h"
+#include "ThreadHelper.h"
 
 using namespace std;
 
@@ -18,16 +19,16 @@ class FactoryTest : public ::testing::Test {
 protected:
     // You can remove any or all of the following functions if their bodies would
     // be empty.
-    Factory* factory;
+//    Factory* factory;
 
     FactoryTest() {
       // You can do set-up work for each test here.
-      factory = new Factory();
+//      factory = new Factory();
     }
 
     ~FactoryTest() override {
       // You can do clean-up work that doesn't throw exceptions here.
-      delete factory;
+//      delete factory;
     }
 
     // If the constructor and destructor are not enough for setting up
@@ -44,19 +45,25 @@ protected:
     }
 
     // Class members declared here can be used by all tests in the test suite
-    // for Foo.
+
+
+    // Run Tests
+    void runTest(Factory* factory_)
+    {
+      if(!ThreadHelper::runTest(factory_))
+      {
+        FAIL() << factory_->name() << " Test Failed" << endl;
+      }
+    }
 };
 
 
 TEST_F(FactoryTest, Test1)
 {
-  if(!factory->runTest())
-  {
-    FAIL() << factory->toString();
-  }
+  FactoryTest::runTest(new Factory(0));
 }
 
-TEST_F(FactoryTest, Test2)
-{
-  FAIL();
-}
+//TEST_F(FactoryTest, Test2)
+//{
+//  FAIL();
+//}
