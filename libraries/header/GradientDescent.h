@@ -12,7 +12,6 @@ using namespace std;
 
 enum Position_Move_Direction
 {
-    None,
     Top,
     Top_Right,
     Right,
@@ -21,6 +20,7 @@ enum Position_Move_Direction
     Bottom_Left,
     Left,
     Top_Left,
+    None,
 };
 
 typedef struct POSITION_
