@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
   GradientDescent gd = GradientDescent(gd_position, 100000);
 
-  gd.findPosition();
+  gd.findMultiplePositions();
 
   return 0;
 }

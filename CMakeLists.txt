@@ -8,3 +8,6 @@ add_subdirectory(libraries)
 
 add_executable(RaceConditionTests main.cpp)
 target_link_libraries(RaceConditionTests RaceCondition_libc)
+
+find_package( Threads )
+target_link_libraries( RaceConditionTests ${CMAKE_THREAD_LIBS_INIT} )

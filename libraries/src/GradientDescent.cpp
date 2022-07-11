@@ -11,11 +11,13 @@
 
 #define NUMBER_OF_SPEEDS (11)
 
-void GradientDescent::findPosition()
+void GradientDescent::findPosition(GradientDescentPosition* position_ptr)
 {
-  GradientDescentPosition new_position = position_;
-  GradientDescentPosition positions[this->position_.dimension_move_directions()][NUMBER_OF_SPEEDS];
+  GradientDescentPosition& position = *position_ptr;
+  GradientDescentPosition new_position = position;
+  GradientDescentPosition positions[position.dimension_move_directions()][NUMBER_OF_SPEEDS];
 
+  size_t number_of_steps = 0;
   bool changed_position = true;
   size_t used_direction = -1ULL;
   int starting_exponent = 0;
@@ -24,22 +26,22 @@ void GradientDescent::findPosition()
   long double speed = 0.0;
   long double used_Speed = 0.0;
 
-  //Get an initial value for the starting position_ so that we can compare
-  terrainFunction(position_);
-  cout << "Start at Position: " << position_.toString() << endl;
+  //Get an initial value for the starting position so that we can compare
+  terrainFunction(position);
+//  printPosition(number_of_steps, position);
 
   //Init all possible positions
   for (size_t speeds = 0; speeds < NUMBER_OF_SPEEDS; ++speeds)
-    for (size_t direction = 0; direction < this->position_.dimension_move_directions() ; direction++)
-      positions[direction][speeds] = position_;
+    for (size_t direction = 0; direction < position.dimension_move_directions() ; direction++)
+      positions[direction][speeds] = position;
 
 
 
   //Run the gradient descent
-  while(++number_of_steps_ <= max_number_of_steps_ && changed_position)
+  while(++number_of_steps <= max_number_of_steps_ && changed_position)
   {
-    //Use NewPosition to check the differences so that we still have the old position_
-    new_position = position_;
+    //Use NewPosition to check the differences so that we still have the old position
+    new_position = position;
     changed_position = false;
     used_direction = -1ULL;
     used_Speed = 0.0;
@@ -55,9 +57,9 @@ void GradientDescent::findPosition()
         speed = (long double)1.0 / ((long double)(1ULL << -exponent));
 
       //Try all directions
-      for (size_t direction = 0; direction < this->position_.dimension_move_directions() ; direction++)
+      for (size_t direction = 0; direction < position.dimension_move_directions() ; direction++)
       {
-        positions[direction][speeds].setPositionAndMove(position_, direction, speed);
+        positions[direction][speeds].setPositionAndMove(position, direction, speed);
 //        terrainFunctionZeta(positions[direction][speeds]);
         terrainFunction(positions[direction][speeds]);
 
@@ -75,23 +77,24 @@ void GradientDescent::findPosition()
     }
 
 
-    //Update the position_
-    position_ = new_position;
+    //Update the position
+    position = new_position;
     starting_exponent = used_exponent;
 
-    //Print the position_
-//    cout << "GradientDescentPosition: " << position_.toString();
-//    cout << "\tUsed direction: " << position_.direction_toString(used_direction);
+    //Print the position
+//    cout << "GradientDescentPosition: " << position.toString();
+//    cout << "\tUsed direction: " << position.direction_toString(used_direction);
 //    cout << "\t\tUsed Speed: " << used_Speed << "\tUsed Exponent: " << used_exponent << endl;
   }
 
 
-  this->printPosition();
+  printPosition(number_of_steps, position);
+  delete position_ptr;
 }
 
-void GradientDescent::printPosition()
+void GradientDescent::printPosition(size_t number_of_steps, GradientDescentPosition position)
 {
-  cout << "Number of Steps: " << to_string(number_of_steps_) << " ; GradientDescentPosition: " << position_.toString() << endl;
+  cout << "Number of Steps: " << to_string(number_of_steps) << " ; GradientDescentPosition: " << position.toString() << endl;
 }
 
 
@@ -151,21 +154,21 @@ long double GradientDescent::terrainFunction(GradientDescentPosition& position)
   long double x_offset = -100.0 + 1.0 / 4.0;
   long double y_offset = 123456789;
   long double z_offset = 10.0;
-  x_offset = 0;
-  y_offset = 0;
+//  x_offset = 0;
+//  y_offset = 0;
 
   long double x = position.dimensions_[0]->position_ + x_offset;
   long double y = position.dimensions_[1]->position_ + y_offset;
   long double z = position.dimensions_[2]->position_ + z_offset;
 
-//  position.value_ = x*x + y*y;
-//  return position.value_;
+  position.value_ = x*x + y*y + z*z;
+  return position.value_;
 
   position.value_ = 657.5 * pow(x,4.0) + 19.07 * pow(x,3.0) + 1.3275 * pow(x,2.0) + 27.0 * x + 2.650 +
                    357.7 * pow(y,4.0) + 171.30 * pow(y,3.0) + 82.7 * pow(y,2.0) + 3873.0 * y + 1.0 +
                    18.0 * pow(x,4.0)*pow(y,4.0) + 9782.230 * pow(x,3.0)*pow(y,3.0) + 217.0 * pow(x,2.0)*pow(y,2.0) + 328.220 * x*y;
 
-  position.value_ += z*z;
+  position.value_ += z*z * 100;
 
   return position.value_;
 }
@@ -177,4 +180,25 @@ long double GradientDescent::terrainFunctionZeta(GradientDescentPosition &positi
   position.value_ = abs(zeta_result);
 
   return position.value_;
+}
+
+void GradientDescent::findMultiplePositions()
+{
+  size_t number_of_threads = 10;
+  pthread_t tid[number_of_threads];
+
+
+
+  for (size_t i = 0; i < number_of_threads; ++i)
+  {
+    auto new_position = new GradientDescentPosition(initial_position_);
+    for (int dimension_number = 0; dimension_number < new_position->dimensions_.size(); ++dimension_number)
+      new_position->dimensions_[dimension_number]->position_ = (double)rand()/(double)rand()*(double)rand();
+
+
+    pthread_create(&tid[i], 0, (void *(*)(void *)) this->findPosition,(void *) new_position);
+  }
+
+  for (size_t i = 0; i < number_of_threads; ++i)
+    pthread_join(tid[i], 0);
 }

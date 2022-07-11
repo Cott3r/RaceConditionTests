@@ -9,6 +9,7 @@
 #include <utility>
 #include <vector>
 #include "iostream"
+#include "pthread.h"
 
 using namespace std;
 
@@ -126,22 +127,24 @@ class GradientDescent
 {
 public:
     GradientDescent(GradientDescentPosition& position, size_t max_number_of_steps) :
-            max_number_of_steps_(max_number_of_steps),
-            number_of_steps_(0),
-            position_(position) {};
-
-    long double terrainFunction(GradientDescentPosition& position);
-    long double terrainFunctionZeta(GradientDescentPosition& position);
-
-    void findPosition();
-
-    void printPosition();
+            initial_position_(position)
+    {
+      max_number_of_steps_ = max_number_of_steps;
+    };
 
     std::complex<long double> zeta(const std::complex<long double>& s);
 
-    size_t number_of_steps_;
-    GradientDescentPosition position_;
-    size_t max_number_of_steps_;
+    static long double terrainFunction(GradientDescentPosition& position);
+    long double terrainFunctionZeta(GradientDescentPosition& position);
+
+    static void findPosition(GradientDescentPosition* position_ptr);
+
+    static void printPosition(size_t number_of_steps, GradientDescentPosition position_);
+
+    void findMultiplePositions();
+
+    GradientDescentPosition initial_position_;
+    inline static size_t max_number_of_steps_;
 };
 
 
