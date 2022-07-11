@@ -6638,7 +6638,7 @@ void ParseGoogleTestFlagsOnly(int* argc, char** argv) {
         absl::flags_internal::OnUndefinedFlag::kReportUndefined);
     // Any command-line positional arguments not part of any command-line flag
     // (or arguments to a flag) are copied back out to argv, with the program
-    // invocation name at position 0, and argc is resized. This includes
+    // invocation name at position_ 0, and argc is resized. This includes
     // positional arguments after the flag-terminating delimiter '--'.
     // See https://abseil.io/docs/cpp/guides/flags.
     std::copy(positional_args.begin(), positional_args.end(), argv);

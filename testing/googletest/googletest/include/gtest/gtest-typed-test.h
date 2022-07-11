@@ -50,7 +50,7 @@ class FooTest : public testing::Test {
   ...
   typedef std::list<T> List;
   static T shared_;
-  T value_;
+  T position_;
 };
 
 // Next, associate a list of types with the test suite, which will be
@@ -69,7 +69,7 @@ TYPED_TEST(FooTest, DoesBlah) {
   // Inside a test, refer to the special name TypeParam to get the type
   // parameter.  Since we are inside a derived class template, C++ requires
   // us to visit the members of FooTest via 'this'.
-  TypeParam n = this->value_;
+  TypeParam n = this->position_;
 
   // To visit static members of the fixture, add the TestFixture::
   // prefix.

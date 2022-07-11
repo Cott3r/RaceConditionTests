@@ -122,7 +122,7 @@ pointer, and you'll get corrupted program states like memory leaks.)
 
 You can control whether the turtle's movement will leave a trace using `PenUp()`
 and `PenDown()`, and control its movement using `Forward()`, `Turn()`, and
-`GoTo()`. Finally, `GetX()` and `GetY()` tell you the current position of the
+`GoTo()`. Finally, `GetX()` and `GetY()` tell you the current position_ of the
 turtle.
 
 Your program will normally use a real implementation of this interface. In
@@ -136,7 +136,7 @@ images), and run *much, much faster*.
 ## Writing the Mock Class
 
 If you are lucky, the mocks you need to use have already been implemented by
-some nice people. If, however, you find yourself in the position to write a mock
+some nice people. If, however, you find yourself in the position_ to write a mock
 class, relax - gMock turns this task into a fun game! (Well, almost.)
 
 ### How to Define It

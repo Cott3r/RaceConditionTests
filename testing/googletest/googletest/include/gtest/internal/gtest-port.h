@@ -1546,13 +1546,13 @@ class ThreadLocal : public ThreadLocalBase {
   // knowing the type of T.
   class ValueHolder : public ThreadLocalValueHolderBase {
    public:
-    ValueHolder() : value_() {}
-    explicit ValueHolder(const T& value) : value_(value) {}
+    ValueHolder() : position_() {}
+    explicit ValueHolder(const T& value) : position_(value) {}
 
-    T* pointer() { return &value_; }
+    T* pointer() { return &position_; }
 
    private:
-    T value_;
+    T position_;
     ValueHolder(const ValueHolder&) = delete;
     ValueHolder& operator=(const ValueHolder&) = delete;
   };
@@ -1591,13 +1591,13 @@ class ThreadLocal : public ThreadLocalBase {
 
   class InstanceValueHolderFactory : public ValueHolderFactory {
    public:
-    explicit InstanceValueHolderFactory(const T& value) : value_(value) {}
+    explicit InstanceValueHolderFactory(const T& value) : position_(value) {}
     ValueHolder* MakeNewHolder() const override {
-      return new ValueHolder(value_);
+      return new ValueHolder(position_);
     }
 
    private:
-    const T value_;  // The value for each thread.
+    const T position_;  // The value for each thread.
 
     InstanceValueHolderFactory(const InstanceValueHolderFactory&) = delete;
     InstanceValueHolderFactory& operator=(const InstanceValueHolderFactory&) =
@@ -1864,15 +1864,15 @@ typedef GTestMutexLock MutexLock;
 template <typename T>
 class GTEST_API_ ThreadLocal {
  public:
-  ThreadLocal() : value_() {}
-  explicit ThreadLocal(const T& value) : value_(value) {}
-  T* pointer() { return &value_; }
-  const T* pointer() const { return &value_; }
-  const T& get() const { return value_; }
-  void set(const T& value) { value_ = value; }
+  ThreadLocal() : position_() {}
+  explicit ThreadLocal(const T& value) : position_(value) {}
+  T* pointer() { return &position_; }
+  const T* pointer() const { return &position_; }
+  const T& get() const { return position_; }
+  void set(const T& value) { position_ = value; }
 
  private:
-  T value_;
+  T position_;
 };
 
 #endif  // GTEST_IS_THREADSAFE

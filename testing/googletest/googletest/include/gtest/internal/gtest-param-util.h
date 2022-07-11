@@ -328,7 +328,7 @@ class ValuesInIteratorRangeGenerator : public ParamGeneratorInterface<T> {
     // We need to use cached value referenced by iterator_ because *iterator_
     // can return a temporary object (and of type other then T), so just
     // having "return &*iterator_;" doesn't work.
-    // value_ is updated here and not in Advance() because Advance()
+    // position_ is updated here and not in Advance() because Advance()
     // can advance iterator_ beyond the end of the range, and we cannot
     // detect that fact. The client code, on the other hand, is
     // responsible for not calling Current() on an out-of-range iterator.
@@ -358,7 +358,7 @@ class ValuesInIteratorRangeGenerator : public ParamGeneratorInterface<T> {
     typename ContainerType::const_iterator iterator_;
     // A cached value of *iterator_. We keep it here to allow access by
     // pointer in the wrapping iterator's operator->().
-    // value_ needs to be mutable to be accessed in Current().
+    // position_ needs to be mutable to be accessed in Current().
     // Use of std::unique_ptr helps manage cached value's lifetime,
     // which is bound by the lifespan of the iterator itself.
     mutable std::unique_ptr<const T> value_;
