@@ -75,3 +75,8 @@ TEST_F(FactoryTest, Assignment1_100)
 {
   FactoryTest::runTest(new Assignment1(100));
 }
+
+TEST_F(FactoryTest, Assignment1_1000)
+{
+  FactoryTest::runTest(new Assignment1(1000));
+}

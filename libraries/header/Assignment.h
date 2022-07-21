@@ -15,6 +15,7 @@
 using std::stringstream;
 using std::string;
 using std::endl;
+using std::to_string;
 
 class Assignment
 {

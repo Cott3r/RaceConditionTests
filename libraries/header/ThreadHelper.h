@@ -11,6 +11,7 @@
 #include <string>
 
 using std::string;
+using std::cout;
 
 //Forward declaration
 class Factory;

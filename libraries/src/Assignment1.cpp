@@ -4,6 +4,14 @@
 
 #include "Assignment1.h"
 
+Assignment1::Assignment1(size_t numberOfThreads) : Assignment(numberOfThreads),
+                                                   next_executed_number(0),
+                                                   next_executed_number_lock(PTHREAD_MUTEX_INITIALIZER),
+                                                   next_executed_number_cond(PTHREAD_COND_INITIALIZER)
+{
+
+}
+
 //This method 'execute' is called by multiple Threads
 
 //***Parameters***
@@ -14,7 +22,15 @@
 
 void Assignment1::execute(size_t number)
 {
+  pthread_mutex_lock(&next_executed_number_lock);
+  while(number != next_executed_number)
+    pthread_cond_wait(&next_executed_number_cond, &next_executed_number_lock);
+
   print(to_string(number));
+
+  next_executed_number++;
+  pthread_mutex_unlock(&next_executed_number_lock);
+  pthread_cond_broadcast(&next_executed_number_cond);
 }
 
 string Assignment1::name()

@@ -27,12 +27,18 @@ Assignment::~Assignment()
 
 void Assignment::execute_internal(size_t number)
 {
+  sched_yield();
+
   this->execute(number);
+
+  sched_yield();
 }
 
 void Assignment::print(string line)
 {
+  sched_yield();
   pthread_mutex_lock(&output_string_lock_);
   output_string_ << line << endl;
   pthread_mutex_unlock(&output_string_lock_);
+  sched_yield();
 }

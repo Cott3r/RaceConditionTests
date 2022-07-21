@@ -7,12 +7,14 @@
 
 #include "Assignment.h"
 
-using namespace std;
-
 class Assignment1 : public Assignment
 {
 public:
-    Assignment1(size_t numberOfThreads) : Assignment(numberOfThreads) {};
+    size_t next_executed_number;
+    pthread_mutex_t next_executed_number_lock;
+    pthread_cond_t  next_executed_number_cond;
+
+    Assignment1(size_t numberOfThreads);
 
     void execute(size_t number);
 
