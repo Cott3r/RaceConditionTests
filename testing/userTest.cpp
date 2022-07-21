@@ -13,6 +13,7 @@
 #include "ThreadHelper.h"
 #include "Assignment.h"
 #include "Assignment1.h"
+#include "Assignment2.h"
 
 using namespace std;
 
@@ -66,17 +67,22 @@ protected:
 };
 
 
-TEST_F(FactoryTest, Assignment1)
-{
-  FactoryTest::runTest(new Assignment1(10));
-}
-
-TEST_F(FactoryTest, Assignment1_100)
-{
-  FactoryTest::runTest(new Assignment1(100));
-}
+//TEST_F(FactoryTest, Assignment1)
+//{
+//  FactoryTest::runTest(new Assignment1(10));
+//}
+//
+//TEST_F(FactoryTest, Assignment1_100)
+//{
+//  FactoryTest::runTest(new Assignment1(100));
+//}
 
 TEST_F(FactoryTest, Assignment1_1000)
 {
   FactoryTest::runTest(new Assignment1(1000));
+}
+
+TEST_F(FactoryTest, Assignment2_1000)
+{
+  FactoryTest::runTest(new Assignment2(1000));
 }
