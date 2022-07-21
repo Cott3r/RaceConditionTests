@@ -17,10 +17,9 @@ Assignment2::Assignment2(size_t numberOfThreads) : Assignment(numberOfThreads),
 //***Parameters***
 //Each Thread has a unique ascending number and this number is passed to this method as the parameter 'number'
 
-//***GOAL***
-//The goal is that the 'print' is called in ascending order
 void Assignment2::execute(size_t number)
 {
+  //****Do not change this Method****
   for (int i = 0; i < 10; ++i)
   {
     sched_yield();
@@ -31,6 +30,9 @@ void Assignment2::execute(size_t number)
   }
 }
 
+
+//***GOAL***
+//The goal is that the Methods 'execute_A' and 'execute_B' must be executed alternating
 void Assignment2::execute_A()
 {
   print("Execute A");
