@@ -35,12 +35,28 @@ void Assignment2::execute(size_t number)
 //The goal is that the Methods 'execute_A' and 'execute_B' must be executed alternating
 void Assignment2::execute_A()
 {
+  pthread_mutex_lock(&next_executed_number_lock);
+  while(next_executed_number != 0)
+    pthread_cond_wait(&next_executed_number_cond, &next_executed_number_lock);
+
   print("Execute A");
+
+  next_executed_number = 1;
+  pthread_mutex_unlock(&next_executed_number_lock);
+  pthread_cond_broadcast(&next_executed_number_cond);
 }
 
 void Assignment2::execute_B()
 {
+  pthread_mutex_lock(&next_executed_number_lock);
+  while(next_executed_number != 1)
+    pthread_cond_wait(&next_executed_number_cond, &next_executed_number_lock);
+
   print("Execute B");
+
+  next_executed_number = 0;
+  pthread_mutex_unlock(&next_executed_number_lock);
+  pthread_cond_broadcast(&next_executed_number_cond);
 }
 
 bool Assignment2::checkOutput()
