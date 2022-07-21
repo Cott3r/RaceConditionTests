@@ -11,6 +11,8 @@
 #include "Worker.h"
 #include "Factory.h"
 #include "ThreadHelper.h"
+#include "Assignment.h"
+#include "Assignment1.h"
 
 using namespace std;
 
@@ -37,6 +39,7 @@ protected:
     void SetUp() override {
       // Code here will be called immediately after the constructor (right
       // before each test).
+      ThreadHelper::SetUp();
     }
 
     void TearDown() override {
@@ -48,22 +51,27 @@ protected:
 
 
     // Run Tests
-    void runTest(Factory* factory_)
+    void runTest(Assignment* assignment)
     {
-      if(!ThreadHelper::runTest(factory_))
+      if(!ThreadHelper::runTest(assignment))
       {
-        FAIL() << factory_->name() << " Test Failed" << endl;
+        string fail_message = assignment->name() + " Test Failed";
+        delete assignment;
+
+        FAIL() << fail_message << endl;
       }
+
+      delete assignment;
     }
 };
 
 
-TEST_F(FactoryTest, Test1)
+TEST_F(FactoryTest, Assignment1)
 {
-  FactoryTest::runTest(new Factory(0));
+  FactoryTest::runTest(new Assignment1(10));
 }
 
-//TEST_F(FactoryTest, Test2)
-//{
-//  FAIL();
-//}
+TEST_F(FactoryTest, Assignment1_100)
+{
+  FactoryTest::runTest(new Assignment1(100));
+}

@@ -3,31 +3,39 @@
 //
 
 #include "ThreadHelper.h"
+#include "Assignment1.h"
 
 
-int ThreadHelper::runFactory(Factory* factory)
+size_t ThreadHelper::runFactory(Factory* factory)
 {
-  return factory->run();
+  size_t return_value = factory->run();
+
+  delete factory;
+
+  return return_value;
 }
 
 
-bool ThreadHelper::runTest(Factory* factory)
+bool ThreadHelper::runTest(Assignment* assignment)
 {
-  pthread_t tid[10] = {0};
+  size_t number_of_threads = assignment->number_of_threads_;
+  pthread_t tid[number_of_threads];
   int tid_num = 0;
   size_t returnValue;
 
   //Start tests in new Threads
-  pthread_create(&tid[tid_num++], 0, (void*(*)(void*))runFactory, (void*)factory);
-//  pthread_create(&tid[tid_num++], 0, (void*(*)(void*))runFactory, (void*)new Factory(1));
-//  pthread_create(&tid[tid_num++], 0, (void*(*)(void*))runFactory, (void*)new Factory(2));
+  for (size_t i = 0; i < number_of_threads; ++i)
+    pthread_create(&tid[tid_num++], 0, (void*(*)(void*))runFactory, (void*)new Factory(assignment));
 
 
   //Wait for tests to finish
   while(--tid_num >= 0)
     pthread_join((tid[tid_num]), (void **) &returnValue);
 
-  return true;
+
+
+  //Check the test result
+  return assignment->checkOutput();
 }
 
 void ThreadHelper::printLine(string line)
@@ -37,4 +45,17 @@ void ThreadHelper::printLine(string line)
   cout << line.c_str() << endl;
 
   pthread_mutex_unlock(&print_Lock);
+}
+
+void ThreadHelper::SetUp()
+{
+  Factory::nextFactoryNumber_ = 0;
+
+  pthread_mutex_lock(&Factory::waiting_to_start_run_counter_lock);
+  Factory::waiting_to_start_run_counter = 0;
+  pthread_mutex_unlock(&Factory::waiting_to_start_run_counter_lock);
+
+  pthread_mutex_lock(&Factory::waiting_to_end_run_counter_lock);
+  Factory::waiting_to_end_run_counter = 0;
+  pthread_mutex_unlock(&Factory::waiting_to_end_run_counter_lock);
 }

@@ -8,16 +8,26 @@
 
 #include "pthread.h"
 #include "Factory.h"
+#include <string>
+
+using std::string;
+
+//Forward declaration
+class Factory;
+class Assignment;
+
 
 class ThreadHelper
 {
-    static int runFactory(Factory* factory);
+    static size_t runFactory(Factory* factory);
     inline static pthread_mutex_t print_Lock = PTHREAD_MUTEX_INITIALIZER;
 
 public:
-    static bool runTest(Factory* factory);
+    static bool runTest(Assignment* assignment);
 
     static void printLine(string line);
+
+    static void SetUp();
 };
 
 
