@@ -361,7 +361,7 @@ class MatcherCastImpl {
                              std::integral_constant<bool, Ignore>) {
     // M is implicitly convertible to Matcher<T>, which means that either
     // M is a polymorphic matcher or Matcher<T> has an implicit constructor
-    // from M.  In both cases using the implicit conversion will produce a
+    // from M.  In both cases using the implicit conversion will producer a
     // matcher.
     //
     // Even if T has an implicit constructor from M, it won't be called because

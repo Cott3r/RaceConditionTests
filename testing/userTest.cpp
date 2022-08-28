@@ -14,6 +14,7 @@
 #include "Assignment.h"
 #include "Assignment1.h"
 #include "Assignment2.h"
+#include "Assignment3.h"
 
 using namespace std;
 
@@ -85,4 +86,9 @@ TEST_F(FactoryTest, Assignment1_1000)
 TEST_F(FactoryTest, Assignment2_1000)
 {
   FactoryTest::runTest(new Assignment2(1000));
+}
+
+TEST_F(FactoryTest, Assignment3_1000)
+{
+  FactoryTest::runTest(new Assignment3(1000));
 }

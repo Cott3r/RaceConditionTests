@@ -174,7 +174,7 @@ To compile *gtest* as a shared library, add
 
     -DGTEST_CREATE_SHARED_LIBRARY=1
 
-to the compiler flags. You'll also need to tell the linker to produce a shared
+to the compiler flags. You'll also need to tell the linker to producer a shared
 library instead - consult your linker's manual for how to do it.
 
 To compile your *tests* that use the gtest shared library, add

@@ -998,7 +998,7 @@ class ReturnAction final {
             //
             // Unlike above we provide the input value as an rvalue to the
             // implicit conversion because this is a OnceAction: it's fine if it
-            // wants to consume the input value.
+            // wants to consumer the input value.
             value(ImplicitCast_<U>(std::move(input_value))) {}
 
       // A copy of the value originally provided by the user. We retain this in

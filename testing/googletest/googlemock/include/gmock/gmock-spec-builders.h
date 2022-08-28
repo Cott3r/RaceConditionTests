@@ -976,7 +976,7 @@ class TypedExpectation<R(Args...)> : public ExpectationBase {
     return After(s1, s2, s3, s4).After(s5);
   }
 
-  // Preferred, type-safe overload: consume anything that can be directly
+  // Preferred, type-safe overload: consumer anything that can be directly
   // converted to a OnceAction, except for Action<F> objects themselves.
   TypedExpectation& WillOnce(OnceAction<F> once_action) {
     // Call the overload below, smuggling the OnceAction as a copyable callable.

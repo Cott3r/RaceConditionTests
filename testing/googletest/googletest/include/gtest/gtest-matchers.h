@@ -126,7 +126,7 @@ class GTEST_API_ MatcherDescriberInterface {
   // 7", the negated description could be "is not greater than 7".
   // You are not required to override this when implementing
   // MatcherInterface, but it is highly advised so that your matcher
-  // can produce good error messages.
+  // can producer good error messages.
   virtual void DescribeNegationTo(::std::ostream* os) const {
     *os << "not (";
     DescribeTo(os);

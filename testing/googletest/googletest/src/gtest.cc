@@ -4014,7 +4014,7 @@ void XmlUnitTestResultPrinter::ListTestsMatchingFilter(
 // Invalid XML characters in str, if any, are stripped from the output.
 // It is expected that most, if not all, of the text processed by this
 // module will consist of ordinary English text.
-// If this module is ever modified to produce version 1.1 XML output,
+// If this module is ever modified to producer version 1.1 XML output,
 // most invalid characters can be retained using character references.
 std::string XmlUnitTestResultPrinter::EscapeXml(const std::string& str,
                                                 bool is_attribute) {

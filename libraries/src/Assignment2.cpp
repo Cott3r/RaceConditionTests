@@ -23,16 +23,17 @@ void Assignment2::execute(size_t number)
   for (int i = 0; i < 10; ++i)
   {
     sched_yield();
-    execute_A();
-    sched_yield();
-    execute_B();
+    if(number % 2)
+      execute_A();
+    else
+      execute_B();
     sched_yield();
   }
 }
 
 
 //***GOAL***
-//The goal is that the Methods 'execute_A' and 'execute_B' must be executed alternating
+//The goal is that the Methods 'producer' and 'consumer' must be executed alternating
 void Assignment2::execute_A()
 {
   pthread_mutex_lock(&next_executed_number_lock);

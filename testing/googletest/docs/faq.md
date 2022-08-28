@@ -671,7 +671,7 @@ TEST(CoolTest, DoSomething) {
 }  // namespace bar
 ```
 
-However, the following code is **not allowed** and will produce a runtime error
+However, the following code is **not allowed** and will producer a runtime error
 from GoogleTest because the test methods are using different test fixture
 classes with the same test suite name.
 

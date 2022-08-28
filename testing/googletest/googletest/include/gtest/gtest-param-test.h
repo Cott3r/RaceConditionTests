@@ -185,7 +185,7 @@ namespace testing {
 
 // Functions producing parameter generators.
 //
-// Google Test uses these generators to produce parameters for value-
+// Google Test uses these generators to producer parameters for value-
 // parameterized tests. When a parameterized test suite is instantiated
 // with a particular generator, Google Test creates and runs tests
 // for each element in the sequence produced by the generator.
@@ -358,7 +358,7 @@ internal::ValueArray<T...> Values(T... v) {
 //
 inline internal::ParamGenerator<bool> Bool() { return Values(false, true); }
 
-// Combine() allows the user to combine two or more sequences to produce
+// Combine() allows the user to combine two or more sequences to producer
 // values of a Cartesian product of those sequences' elements.
 //
 // Synopsis:

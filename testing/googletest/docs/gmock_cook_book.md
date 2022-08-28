@@ -1302,7 +1302,7 @@ to a number less than 3 (what a mouthful...).
 ### Defining a Custom Matcher Class {#CustomMatcherClass}
 
 Most matchers can be simply defined using [the MATCHER* macros](#NewMatchers),
-which are terse and flexible, and produce good error messages. However, these
+which are terse and flexible, and producer good error messages. However, these
 macros are not very explicit about the interfaces they create and are not always
 suitable, especially for matchers that will be widely reused.
 
